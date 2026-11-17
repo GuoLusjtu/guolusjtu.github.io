@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+
+<style>
+/* ===== Compact Services spacing ===== */
+#services ul{
+  margin: 0 0 6px 18px;   /* 缩小每条之间的间距 */
+  padding: 0;
+}
+#services li{ margin: 0; padding: 0; }
+#services li p{
+  margin: 0;              /* 去掉 <p> 默认上下空白 */
+  line-height: 1.35;      /* 更紧凑的行高 */
+}
+</style>
+
+
+<style>
+/* ===== Recent Publications (keep authors) ===== */
+#publications .pub-list-item { margin: 0 0 14px 0; padding: 0; }
+#publications .pub-list-item .row { margin: 0; }
+#publications .pub-list-item .col-md-12 { padding-left: 0; padding-right: 0; }
+
+/* Keep long titles readable without crowding the authors. */
+#publications .article-title{
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Authors: keep but compact */
+#publications .pub-authors{
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 3px 0 0 0;
+  color: #555;
+}
+
+/* Abstract: hide */
+#publications .pub-abstract{ display: none; }
+
+/* Publication line: hide venue text but keep buttons/links */
+#publications .pub-publication{
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  line-height: 1.2;
+}
+#publications .pub-publication em{ display: none; } /* 只隐藏期刊/会议那行文字 */
+#publications .pub-publication a.btn{
+  padding: 1px 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  margin-right: 6px;
+}
+
+/* Venue tag (optional) */
+#publications .venue-tag{
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-right: 8px;
+  font-weight: 700;
+  vertical-align: 2px;
+}
+#publications .venue-cvpr { background:#1f77b4; color:#fff; }
+#publications .venue-iccv { background:#9467bd; color:#fff; }
+#publications .venue-eccv { background:#17becf; color:#fff; }
+#publications .venue-tip  { background:#ff7f0e; color:#fff; }
+#publications .venue-tpami{ background:#2ca02c; color:#fff; }
+#publications .venue-mm   { background:#d62728; color:#fff; }
+#publications .venue-other{ background:#555; color:#fff; }
+
+</style>
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme" content="hugo-academic">
+    <meta name="generator" content="Hugo 0.31.1" />
+    <meta name="author" content="Guo Lu">
+    <meta name="description" content="Associate Professor at Shanghai Jiao Tong University | Video Coding, Multimedia Processing, and Efficient Multimodal LLMs">
+
+    <link rel="stylesheet" href="https://guolusjtu.github.io/css/highlight.min.css">
+    <link rel="stylesheet" href="https://guolusjtu.github.io/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://guolusjtu.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://guolusjtu.github.io/css/academicons.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
+    <link rel="stylesheet" href="https://guolusjtu.github.io/css/hugo-academic.css?v=20260927-navigation2">
+
+
+
+    <link rel="shortcut icon" href="https://guolusjtu.github.io/img/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://guolusjtu.github.io/">
+
+    <title>Guo Lu (鲁国) | SJTU | Video Coding &amp; Generative AI</title>
+
+</head>
+
+<body id="top">
+
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+        <div class="container">
+
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://guolusjtu.github.io/">GUO LU&#39;s Homepage</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="#navbar-collapse-1">
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="nav-item"><a href="https://guolusjtu.github.io/#top">Home</a></li>
+
+                    <li class="nav-item"><a href="https://guolusjtu.github.io/#news">News</a></li>
+
+                    <li class="nav-item"><a
+                            href="https://guolusjtu.github.io/#publications">Publications</a></li>
+
+                    <li class="nav-item"><a href="https://guolusjtu.github.io/#awards">Awards</a></li>
+
+                    <li class="nav-item"><a href="https://guolusjtu.github.io/#teaching">Teaching</a></li>
+
+                    <li class="nav-item"><a href="https://guolusjtu.github.io/#services">Services</a></li>
+
+                    <li class="nav-item"><a href="https://guolusjtu.github.io/#contact">Contact</a></li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <span id="homepage" style="display: none"></span>
+
+
+
+
+
+
+
+
+    <section id="bio" class="home-section">
+        <div class="container">
+            <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <div class="col-xs-12 col-md-3">
+                    <div id="profile">
+
+                        <div class="portrait" itemprop="image"
+                            style="background-image: url('https://guolusjtu.github.io/img/my-new.jpg');">
+                        </div>
+
+                        <div class="portrait-title">
+                            <h2 itemprop="name">Guo Lu</h2>
+                            <h3 itemprop="jobTitle">Associate Professor</h3>
+                            <h3 itemprop="worksFor">Shanghai Jiao Tong University</h3>
+                        </div>
+
+                        <ul class="social-icon">
+
+                            <li>
+                                <a href="#contact" aria-label="Contact">
+
+                                    <i class="fa fa-envelope big-icon" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://scholar.google.com/citations?user=R9iwlJcAAAAJ&hl=en">
+
+                                    <i class="ai ai-google-scholar big-icon" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://github.com/GuoLusjtu?tab=repositories">
+
+                                    <i class="fa fa-github big-icon" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://www.linkedin.com/in/guo-lu-118a6592/" aria-label="LinkedIn">
+
+                                    <i class="fa fa-linkedin big-icon" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://guolusjtu.github.io/files/Guo-Lu-CV.pdf" aria-label="CV">
+
+                                    <i class="fa fa-file-pdf-o big-icon" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="visible-sm visible-xs"></div>
+
+                <div class="col-xs-12 col-md-9" itemprop="description">
+
+
+                        <h3 id="about-me-heading" class="about-me-heading">About Me</h3>
+                        <p>
+                        I am a tenure-track Associate Professor (Ph.D. supervisor) in the Department of Electronic Engineering, Shanghai Jiao Tong University.
+                        Before joining SJTU, I was an Assistant Professor at the Beijing Institute of Technology (2020&ndash;2022).
+                        I received my Ph.D. degree in Electronic Engineering from <a href="http://www.sjtu.edu.cn">Shanghai Jiao Tong University</a> in 2020.
+                        From Sep. 2017 to Mar. 2019, I was a visiting researcher at <a href="https://www.sydney.edu.au/">the University of Sydney</a>, working with <a href="https://scholar.google.com/citations?user=pw_0Z_UAAAAJ&hl=en">Prof. Wanli Ouyang</a> and <a href="https://scholar.google.com/citations?user=7Hdu5k4AAAAJ&hl=zh-CN">Prof. Dong Xu</a>.
+                        My research interests include video coding, multimedia processing, and efficient multimodal large language models
+                        <br>
+                        I serve as an Associate Editor for IEEE Transactions on Circuits and Systems for Video Technology (T-CSVT) and as a Guest Editor for journals including IJCV.
+                        I have served as an Area Chair for conferences (e.g., ICLR and NeurIPS) and have organized tutorials/workshops on learned compression at venues such as CVPR and ACM Multimedia.
+                        <br>
+                        My honors include the IEEE Visual Signal Processing and Communications Rising Star Award, best paper awards at conferences such as VCIP/WCSP, and outstanding doctoral dissertation awards (including awards from CSIG and Shanghai Jiao Tong University).
+                        </p>
+                        <p class="chinese-profile-line" lang="zh-CN">鲁国，上海交通大学电子工程系副教授 &middot; <a href="https://icisee.sjtu.edu.cn/jiaoshiml/luguo.html">&#20013;&#25991;&#20027;&#39029; &rarr;</a></p>
+                        <aside class="join-us-callout" aria-labelledby="join-us-heading">
+                            <h3 id="join-us-heading">Join Us</h3>
+                            <p>We are looking for self-motivated Ph.D./M.S. students, research interns, and postdoctoral fellows. Prospective applicants are welcome to send a CV and transcript by email.</p>
+                        </aside>
+                    <div class="row">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section id="news" class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 section-heading">
+                    <h1>News</h1>
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <ul>
+                        <li><p>2026.9 One Ph.D. student and two master’s students in our group were awarded the National Scholarship. Congratulations!</p></li>
+                        <li><p>2026.9 Received an NSFC Young Scientists Fund-Type B grant (国家自然科学基金青年科学基金项目（B类）).</p></li>
+                        <li><p>2026.8 Serving as an Area Chair for ICLR and as a Senior PC member for AAAI.</p></li>
+                        <li><p>2026.8 Two papers were accepted by ACM TOMM and IEEE T-CSVT.</p></li>
+                        <li><p>2026.7 Two papers were accepted by ACM MM 2026, and one paper was accepted by ECCV 2026.</p></li>
+                        <li><p>2026.6 Organizing the Challenge on Ultra-Low Bitrate Image Compression at ECCV 2026.</p></li>
+                    </ul>
+                    <p class="view-all">
+                        <a href="https://guolusjtu.github.io/news/">More News</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="publications" class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 section-heading">
+                    <h1>Recent Publications</h1>
+                    <p>Selected corresponding-author publications.</p>
+                    <p class="view-all">
+                        <a href="https://guolusjtu.github.io/publication/">
+                            More Publications
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </p>
+
+                </div>
+
+                <div class="col-xs-12 col-md-9">
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    [TPAMI&#39;26] Image Quality Assessment for Machine-oriented Communication
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Chunyi Li, Xiaoyue Ling, Farong Wen, Haoyang Li, <u>Guo Lu</u>, Weisi Lin, Xiao-Ping Zhang, Guangtao Zhai, Wenjun Zhang
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Pattern Analysis and Machine Intelligence, 2026.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2602.05213">[T-CSVT&#39;26] Dual-Representation Image Compression at Ultra-Low Bitrates via Explicit Semantics and Implicit Textures</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Chuqin Zhou, Xiaoyue Ling, Yunuo Chen, Jincheng Dai, <u>Guo Lu</u>, Wenjun Zhang
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Circuits and Systems for Video Technology, 2026.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2609.23005">[TIP&#39;26] Compressing 3D Gaussian Splatting via Cross-Representation Priors</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yezheng Zhang, Huanxiong Liang, Chuqin Zhou, <u>Guo Lu</u>, Wenjun Zhang
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Image Processing, 2026.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2602.09868">[TBC&#39;26] Free-GVC: Towards Training-Free Extreme Generative Video Compression with Temporal Coherence</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Xiaoyue Ling, Chuqin Zhou, Chunyi Li, Yunuo Chen, Yuan Tian, <u>Guo Lu</u>, Wenjun Zhang
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Broadcasting, 2026.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2603.15129">[ECCV&#39;26] Next-frame Decoding for Ultra-Low-Bitrate Image Compression with Video Diffusion Priors </a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yunuo Chen, Chuqin Zhou, Jiangchuan Li, Xiaoyue Ling, Bing He, Jincheng Dai, Li Song, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ECCV, 2026.</em>                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2608.11096">[ACMMM&#39;26] Every Packet Counts: Dispersing Information for Loss-Resilient Learned Image Compression<span style="color:red"><strong>(Oral).</strong></span></a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yuhang Wei, Chuqin Zhou, Yibo Shi, Jing Wang, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ACMMM, 2026.</em>                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2608.05976">[TOMM&#39;26] Diff-VF: Training-free High-quality Long Video Generation via Diffusion Model</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Haoning Yang, Xinyuan Chen, Yaohui Wang, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM), 2026.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://scholar.google.com.au/citations?view_op=view_citation&amp;hl=zh-CN&amp;user=R9iwlJcAAAAJ&amp;cstart=20&amp;pagesize=80&amp;sortby=pubdate&amp;citation_for_view=R9iwlJcAAAAJ:ZHo1McVdvXMC">[T-CSVT&#39;26] Large Language Model for Lossless Image Compression with Visual Prompts</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Junhao Du, Chuqin Zhou, Yunuo Chen, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Circuits and Systems for Video Technology, 2026.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1016/j.eng.2025.06.018">[Engineering&#39;26]  Generative Video Communications: Concepts, Key Technologies, and Future Research Trends </a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Wenjun Zhang, <u>Guo Lu</u>, Zhiyong Chen, GY Li
+                                </div>
+                                <div class="pub-publication">
+                                    <em>Engineering, 2026.</em>                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2603.21957">[CVPR&#39;26]  Unified Spatiotemporal Token Compression for Video-LLMs at Ultra-Low Retention</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Junhao Du, Jialong Xue, Anqi Li, Jincheng Dai, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>CVPR, 2026.</em>                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>     
+
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2603.25316">[CVPR&#39;26]  Adaptive Learned Image Compression with Graph Neural Networks</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yunuo Chen, Bing He, Zezheng Lyu, Hongwei Hu, Qunshan Gu, Yuan Tian, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>CVPR, 2026.</em>                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>  
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://arxiv.org/abs/2508.02192">[ICLR&#39;26]  Content-Aware Mamba for Learned Image Compression </a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yunuo Chen, Zezheng Lyu, Bing He, Hongwei Hu, Qi Wang, Yuan Tian, Li Song, Wenjun Zhang, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ICLR, 2026.</em>                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>                    
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/iccv51701.2025.00475">[ICCV&#39;25] Knowledge Distillation for Learned Image Compression<span style="color:red"><strong>(Oral).</strong></span> </a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yunuo Chen, Zezheng Lyu, Bing He, Ning Cao, Gang Chen, <u>Guo Lu</u>, Wenjun Zhang
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ICCV 2025 . </em>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIP2022 -->
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1609/aaai.v39i10.33165">[AAAI&#39;25] Controllable Distortion-Perception Tradeoff Through Latent Diffusion for Neural Image Compression</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                  Chuqin Zhou, <u>Guo Lu</u>, Jiangchuan Li, Xiangyu Chen, Zhengxue Cheng, Li Song, Wenjun Zhang
+                                </div>
+                                <div class="pub-publication">
+                                    <em>Proceedings of the AAAI Conference on Artificial Intelligence, 39(10), 10725–10733, 2025.</em>
+                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/tpami.2025.3625063">[TPAMI&#39;25] SMC++: Masked Learning of Unsupervised Video Semantic Compression</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                       Yuan Tian, Xiaoyue Ling, Cong Geng, Qiang Hu, <u>Guo Lu</u>, and Guangtao Zhai
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Pattern Analysis and Machine Intelligence,2025</em>
+                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/cvpr52734.2025.00709">[CVPR&#39;25] Image Quality Assessment: From Human to Machine Preference<span style="color:red"><strong>(Highlight).</strong></span> </a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                        Chunyi Li, Yuan Tian, Xiaoyue Ling, Zicheng Zhang, Haodong Duan, Haoning Wu, Ziheng Jia, Xiaohong Liu, Xiongkuo Min, <u>Guo Lu</u>, Weisi Lin, Guangtao Zhai
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2025.</em>
+                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1145/3770854.3783934">[KDD&#39;25] Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                        Anqi Li, Wenwei Jin, Jintao Tong, Pengda Qin, Weijia Li, <u>Guo Lu</u>
+                                </div>
+                                <div class="pub-publication">
+                                    <em>KDD, 2025.</em>
+                                </div>                                 
+                            </div>
+                        </div>
+                    </div>
+
+           
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/tip.2025.3536201">[T-IP&#39;25] Implicit-explicit Integrated Representations for Multi-view Video Compression</a>
+                                </h3>
+
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+
+                                <div class="pub-authors" itemprop="author">
+                                    Chen Zhu, <u>Guo Lu</u>, Bing He, Rong Xie, Li Song
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Image Processing,2025.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/jsac.2025.3559140">[JSAC&#39;25] VARFVV: View-Adaptive Real-Time Interactive Free-View Video Streaming with Edge Computing</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Qiang Hu, Qihan He, Houqiang Zhong, <u>Guo Lu</u>, Xiaoyun Zhang, Guangtao Zhai, Yanfeng Wang
+                                </div>
+
+                                <div class="pub-publication">
+                                    <em>IEEE Journal on Selected Areas in Communications, 2025.</em>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/tpami.2024.3367879">[TPAMI&#39;24] A Coding Framework and Benchmark towards Low-Bitrate Video Understanding</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yuan Tian, <u>Guo Lu</u>, Yichao Yan, Guangtao Zhai, Li Chen, Zhiyong Gao
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Pattern Analysis and Machine Intelligence, 2024. </em>                       
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://openreview.net/forum?id=42lcaojZug">[ICLR&#39;24] Neural Rate Control for Learned Video Compression</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Yiwei Zhang, <u>Guo Lu</u>, Yunuo Chen, Shen Wang, Yibo Shi, Jing Wang, Li Song
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ICLR, 2024.</em>  
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1109/tcsvt.2024.3441049">[T-CSVT&#39;24]  Preprocessing enhanced image compression for machine vision</a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    <u>Guo Lu</u>, Xingtong Ge, Tianxiong Zhong, Jing Geng, Qiang Hu.
+                                </div>
+                                <div class="pub-publication">
+                                    <em>IEEE Transactions on Circuits and Systems for Video Technology, 2024.</em> 
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://doi.org/10.1145/3664647.3680970">[ACMMM&#39;24] Rate-aware Compression for NeRF-based Volumetric Video<span style="color:red"><strong>(Oral).</strong></span> </a>
+                                </h3>
+                                <div class="pub-abstract" itemprop="text">
+                                </div>
+                                <div class="pub-authors" itemprop="author">
+                                    Zhiyu Zhang, <u>Guo Lu</u>, Huanxiong Liang, Zhengxue Cheng, Anni Tang, Li Song
+                                </div>
+                                <div class="pub-publication">
+                                    <em>ACM MM, 2024.</em> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="awards" class="home-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3 section-heading">
+                        <h1>Awards</h1>
+    
+                    </div>
+                    <div class="col-xs-12 col-md-9">
+   
+                         <ul>
+                            <li> ICML Gold Reviewer Award, 2026.</li>
+                              <li>Stanford/Elsevier - World’s Top 2% Scientists, 2025–2026.</li>
+                              <li>IEEE WCSP Best Paper Award, 2025</li>                             
+                              <li>VCIP Best Student Paper Runner-up, 2024</li>
+                            <li>China Association for Science and Technology Youth Talent Support Program, 2024</li>
+                            <li>IEEE CASS Visual Signal Processing and Communications (VSPC) Rising Star, 2023.</li>
+                            <li>Excellent Doctoral Dissertation Award of China Society of Image and Graphics, 2022</li>
+                            <li>Top Creativity Award in IEEE VCIP Grand Challenge “Practical End-to-end Image Compression”, 2022.</li>
+                            <li>Excellent Doctoral Dissertation Award of Shanghai Jiao Tong University, 2020</li>
+
+                         </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    <section id="teaching" class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 section-heading">
+                    <h1>Teaching</h1>
+
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <h3 id="undergraduate-courses">Undergraduate Course</h3>
+                    <ul>
+                        <li>Video Coding and Communication, 2022 ~ now</li>
+                    </ul>
+                    <h3 id="graduate-courses">Graduate Course</h3>
+                    <ul>
+                        <li>Multimedia Networking, 2022～ now</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="services" class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 section-heading">
+                    <h1>Services</h1>
+
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <ul>
+                        <li>
+                            <p>Associate Editor, IEEE T-CSVT, 2025 </p>
+                        </li>
+                        <li>
+                            <p>Guest Editor, IEEE JETCAS Special Issue on &ldquo;When Large Models Meet Video Coding: Synergies, Systems, and Hardware Challenges,&rdquo; 2026.</p>
+                        </li>
+                        <li>
+                            <p>Challenge Organizer, The Challenge on Ultra-Low Bitrate Image Compression @ ECCV 2026.</p>
+                        </li>
+                        <li>
+                            <p>IEEE VSPC-TC Member, 2025 </p>
+                        </li>
+                        <li>
+                            <p>LAC-Technical Program Chairs, ICASSP Satellite Event Suzhou, China. 2025 </p>
+                        </li>
+                        <li>
+                            <p>Area Chair, International Conference on Learning Representations (ICLR), 2025, 2026.</p>
+                        </li>
+                        <li>
+                            <p>Area Chair, Annual Conference on Neural Information Processing Systems (NeurIPS), 2025, 2026 (Top AC in 2026).</p>
+                        </li> 
+                        <li>
+                            <p>Challenge Organizer, Ultra-low Bitrate Video Compression at VCIP, 2025.</p>
+                        </li>                                                 
+                        <li>
+                            <p>Senior PC, AAAI, 2021, 2026.</p>
+                        </li>                        
+                        <li>
+                            <p>Guest Editor, IJCV special issue on Video Understanding and Video Compression. 2021. </p>
+                        </li>     
+                        <li>
+                            <p>Guest Editor, T-CSVT special issue on Learned Visual Data Compression for both Human and Machine. 2022. </p>
+                        </li>                                                 
+                        <li>
+                            <p>Tutorial Organizer, ACM MM Tutorial on Deep Learning for Visual Data Compression, 2021. </p>
+                        </li>   
+                        <li>
+                            <p>Tutorial Organizer, CVPR Tutorial on Learning for Visual Data Compression, 2021. </p>
+                        </li>    
+                        <li>
+                            <p>Tutorial Organizer, VCIP Tutorial on Learned Image and Video Compression with Deep Neural Networks, 2020. </p>
+                        </li>        
+                        <li>
+                            <p>Tutorial Organizer, IEEE AVSS Tutorial on Deep Learning for Video Compression and Understanding, Taipei, 2019 </p>
+                        </li>                                                                                 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section id="contact" class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 section-heading">
+                    <h1>Contact</h1>
+
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+                            <span>luguo2014 AT sjtu.edu.cn</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>
+                            <span>Room 403, Building 5, SEIEE, Shanghai Jiao Tong University, China.</span>                            
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="powered-by">
+
+                &copy; 2020–2026 Guo Lu &middot;
+
+                Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic theme</a> for
+                <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+                <span class="pull-right"><a href="#" id="back_to_top"><span class="button_icon"><i
+                                class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></span></a></span>
+
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://guolusjtu.github.io/js/jquery-1.12.3.min.js"></script>
+    <script src="https://guolusjtu.github.io/js/bootstrap.min.js"></script>
+    <script src="https://guolusjtu.github.io/js/hugo-academic.js?v=20260927-navigation2"></script>
+
+
+
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7f0b11c30fc344bfb55c572509aea6d0"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>
